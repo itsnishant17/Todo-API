@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-// Data Source, could be replaced with a real database
 const todos = [
   {
     title: "Todo 1",
@@ -51,35 +50,22 @@ app.get("/todos/:id", (request, response) => {
     .json({ data: todos.find((todo) => todo.id === request.params.id) });
 });
 
-app.post("/todos", (request, response) => {
+const addpost=("/todos", (request, response) => {
   todos.push(request.body);
   response.status(201).json({ msg: "Todo created successfully" });
 });
 
-// app.put("/todos/:id", (request, response) => {
-//   const todo = todos.find((todo) => todo.id === request.params.id);
-//   if (todo) {
-//     const { title, desc, completed } = request.body;
-//     todo.title = title;
-//     todo.desc = desc;
-//     todo.completed = completed;
-//     response.status(200).json({ msg: "Todo updated sucessfully" });
-//     return;
-//   }
-//   response.status(404).json({ msg: "Todo not found" });
-// });
+
 const addTodo=(request,response)=>{
   todos.push(request.body);
   response.status(201).json({msg:"Todo created sucessfully"});
 }
 
-app.delete("/todos/:id", (request, response) => {
-  const todoIndex = todos.findIndex((todo) => (todo.id = request.params.id));
-  if (todoIndex) {
-    todos.splice(todoIndex, 1);
+const deletetodo=("/todos/:id", async (request, response) => {
+  const id = req.params.id
+  const temp = await repo.delete(id)
     response.status(200).json({ msg: "Todo deleted successfully" });
-  }
-  response.status(404).json({ msg: "Todo not found" });
+  
 });
 
 app.listen(port, () => {
