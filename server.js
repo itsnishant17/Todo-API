@@ -56,18 +56,22 @@ app.post("/todos", (request, response) => {
   response.status(201).json({ msg: "Todo created successfully" });
 });
 
-app.put("/todos/:id", (request, response) => {
-  const todo = todos.find((todo) => todo.id === request.params.id);
-  if (todo) {
-    const { title, desc, completed } = request.body;
-    todo.title = title;
-    todo.desc = desc;
-    todo.completed = completed;
-    response.status(200).json({ msg: "Todo updated sucessfully" });
-    return;
-  }
-  response.status(404).json({ msg: "Todo not found" });
-});
+// app.put("/todos/:id", (request, response) => {
+//   const todo = todos.find((todo) => todo.id === request.params.id);
+//   if (todo) {
+//     const { title, desc, completed } = request.body;
+//     todo.title = title;
+//     todo.desc = desc;
+//     todo.completed = completed;
+//     response.status(200).json({ msg: "Todo updated sucessfully" });
+//     return;
+//   }
+//   response.status(404).json({ msg: "Todo not found" });
+// });
+const addTodo=(request,response)=>{
+  todos.push(request.body);
+  response.status(201).json({msg:"Todo created sucessfully"});
+}
 
 app.delete("/todos/:id", (request, response) => {
   const todoIndex = todos.findIndex((todo) => (todo.id = request.params.id));
