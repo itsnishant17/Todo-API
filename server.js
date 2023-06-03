@@ -68,6 +68,12 @@ const deletetodo=("/todos/:id", async (request, response) => {
   
 });
 
+
+app.post("/",(req,res)=>{
+  const data=req.body;
+  res.status(200).json({message:"POST request successful"});
+});
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

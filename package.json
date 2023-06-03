@@ -1,5 +1,14 @@
 {
   "dependencies": {
     "express": "^5.0.0-alpha.8"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "todo-api-with-expressjs",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
